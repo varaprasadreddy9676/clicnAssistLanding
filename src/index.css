@@ -68,6 +68,7 @@ All colors MUST be HSL for consistency with Tailwind config.
     --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     --transition-base: all 0.3s var(--ease-smooth);
     --transition-fast: all 0.2s var(--ease-smooth);
+  }
 }
 
 @layer base {
