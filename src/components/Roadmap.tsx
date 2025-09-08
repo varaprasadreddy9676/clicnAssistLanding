@@ -14,17 +14,17 @@ const Roadmap = () => {
     },
     {
       icon: Rocket,
-      title: 'v1 (6 months)',
+      title: 'v1 (1 month)',
       description: 'Multilingual transcription & real adapter pilots',
       status: 'planned',
-      timeframe: '6 months'
+      timeframe: '1 month'
     },
     {
       icon: BarChart3,
-      title: 'v2 (12 months)',
+      title: 'v2 (2 months)',
       description: 'Analytics dashboard & telemedicine integration',
       status: 'future',
-      timeframe: '12 months'
+      timeframe: '2 months'
     }
   ];
 
