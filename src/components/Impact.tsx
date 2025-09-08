@@ -28,7 +28,7 @@ const Impact = () => {
     }
   ];
 
-  const languages = ['English', 'Hindi', 'Telugu', 'Tamil (planned)'];
+  
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -124,24 +124,6 @@ const Impact = () => {
           </div>
         </div>
 
-        {/* Language Support */}
-        <div className="text-center">
-          <h3 className="text-h3 text-foreground mb-6">Language Support</h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {languages.map((language, index) => (
-              <div
-                key={index}
-                className={`px-4 py-2 rounded-full border ${
-                  language.includes('planned')
-                    ? 'border-muted/50 text-muted bg-surface/30'
-                    : 'border-primary/30 text-primary bg-primary/10'
-                }`}
-              >
-                <span className="text-small font-medium">{language}</span>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
