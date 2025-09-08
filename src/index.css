@@ -66,8 +66,10 @@ All colors MUST be HSL for consistency with Tailwind config.
     /* Animation Easing */
     --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     --transition-base: all 0.3s var(--ease-smooth);
     --transition-fast: all 0.2s var(--ease-smooth);
+    --transition-parallax: transform 0.1s var(--ease-smooth);
   }
 }
 
@@ -199,11 +201,75 @@ All colors MUST be HSL for consistency with Tailwind config.
     animation: float 6s ease-in-out infinite;
   }
   
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite reverse;
+  }
+  
+  .animate-float-fast {
+    animation: float 4s ease-in-out infinite;
+  }
+  
   .animate-typewriter {
     overflow: hidden;
     border-right: 2px solid hsl(var(--primary));
     white-space: nowrap;
     animation: typewriter 3s steps(40, end), blink 0.75s step-end infinite;
+  }
+  
+  .animate-parallax-mouse {
+    transition: var(--transition-parallax);
+  }
+  
+  .animate-scroll-parallax {
+    transition: transform 0.2s var(--ease-smooth);
+  }
+  
+  .animate-particle-drift {
+    animation: particle-drift 12s linear infinite;
+  }
+  
+  .animate-rotate-3d {
+    animation: rotate-3d 20s linear infinite;
+  }
+
+  /* Flip Card 3D Animation */
+  .flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+    height: 240px;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+  }
+
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: var(--radius);
+  }
+
+  .flip-card-front {
+    color: var(--foreground);
+  }
+
+  .flip-card-back {
+    color: var(--foreground);
+    transform: rotateY(180deg);
+    border: 1px solid hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.2);
   }
 }
 
@@ -272,6 +338,56 @@ All colors MUST be HSL for consistency with Tailwind config.
   }
 }
 
+@keyframes particle-drift {
+  0% {
+    transform: translateY(100vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes rotate-3d {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+@keyframes parallax-float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(-5px) translateX(-5px);
+  }
+  75% {
+    transform: translateY(-15px) translateX(3px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    filter: blur(2px) brightness(1);
+  }
+  50% {
+    filter: blur(4px) brightness(1.2);
+  }
+}
+
 /* Responsive utilities */
 @media (prefers-reduced-motion: reduce) {
   .animate-pulse-glow,
@@ -282,5 +398,29 @@ All colors MUST be HSL for consistency with Tailwind config.
   
   .interactive-hover:hover {
     transform: none;
+  }
+  
+  /* Disable 3D flip animation for users who prefer reduced motion */
+  .flip-card:hover .flip-card-inner {
+    transform: none;
+  }
+  
+  .flip-card-back {
+    display: none;
+  }
+}
+
+/* Responsive flip cards */
+@media (max-width: 768px) {
+  .flip-card {
+    height: 280px;
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: none;
+  }
+  
+  .flip-card-back {
+    display: none;
   }
 }

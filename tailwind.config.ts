@@ -106,6 +106,22 @@ export default {
             transform: "translateY(-20px)",
           },
         },
+        "float-slow": {
+          "0%, 100%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
+            transform: "translateY(-25px)",
+          },
+        },
+        "float-fast": {
+          "0%, 100%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
+            transform: "translateY(-15px)",
+          },
+        },
         "waveform": {
           "0%, 100%": {
             transform: "scaleY(1)",
@@ -130,14 +146,66 @@ export default {
             borderColor: "hsl(var(--primary))",
           },
         },
+        "particle-drift": {
+          "0%": {
+            transform: "translateY(100vh) translateX(0) rotate(0deg)",
+            opacity: "0",
+          },
+          "10%": {
+            opacity: "1",
+          },
+          "90%": {
+            opacity: "1",
+          },
+          "100%": {
+            transform: "translateY(-100vh) translateX(50px) rotate(360deg)",
+            opacity: "0",
+          },
+        },
+        "rotate-3d": {
+          "0%": {
+            transform: "rotateX(0deg) rotateY(0deg) rotateZ(0deg)",
+          },
+          "100%": {
+            transform: "rotateX(360deg) rotateY(360deg) rotateZ(360deg)",
+          },
+        },
+        "parallax-float": {
+          "0%, 100%": {
+            transform: "translateY(0px) translateX(0px)",
+          },
+          "25%": {
+            transform: "translateY(-10px) translateX(5px)",
+          },
+          "50%": {
+            transform: "translateY(-5px) translateX(-5px)",
+          },
+          "75%": {
+            transform: "translateY(-15px) translateX(3px)",
+          },
+        },
+        "glow-pulse": {
+          "0%, 100%": {
+            filter: "blur(2px) brightness(1)",
+          },
+          "50%": {
+            filter: "blur(4px) brightness(1.2)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-glow": "pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "float": "float 6s ease-in-out infinite",
+        "float-slow": "float-slow 8s ease-in-out infinite reverse",
+        "float-fast": "float-fast 4s ease-in-out infinite",
         "waveform": "waveform 1s ease-in-out infinite",
         "typewriter": "typewriter 3s steps(40, end), blink 0.75s step-end infinite",
+        "particle-drift": "particle-drift 12s linear infinite",
+        "rotate-3d": "rotate-3d 20s linear infinite",
+        "parallax-float": "parallax-float 8s ease-in-out infinite",
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
       },
       spacing: {
         'section': 'clamp(40px, 8vw, 80px)',
